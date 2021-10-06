@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rbl.accounts.mapper.TradeDetailMapper">
+    <resultMap id="BaseResultMap" type="com.rbl.accounts.model.TradeDetail">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="batch_no" jdbcType="VARCHAR" property="batchNo"/>
+        <result column="trade_id" jdbcType="VARCHAR" property="tradeId"/>
+        <result column="project_id" jdbcType="VARCHAR" property="projectId"/>
+        <result column="goods_id" jdbcType="VARCHAR" property="goodsId"/>
+        <result column="goods_name" jdbcType="VARCHAR" property="goodsName"/>
+        <result column="goods_count" jdbcType="VARCHAR" property="goodsCount"/>
+        <result column="income" jdbcType="INTEGER" property="income"/>
+        <result column="sell" jdbcType="INTEGER" property="sell"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="state" jdbcType="TINYINT" property="state"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <result column="update_time" jdbcType="DATE" property="updateTime"/>
+        <result column="sell_time" jdbcType="DATE" property="sellTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        , user_id, batch_no,trade_id,project_id, goods_id, goods_name, goods_count, income, sell, remarks,
+        state,create_time, update_time,sell_time
+    </sql>
+
+
+    <!--查找交易记录-->
+    <select id="find" parameterType="java.lang.String" resultMap="BaseResultMap">
+        Select
+        <include refid="Base_Column_List"/>
+        FROM `keep_accounts`.`trade_detail`
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="userId != null">user_id = #{userId}</if>
+            <if test="projectId != null">AND project_id = #{projectId}</if>
+            <if test="state != null">AND state = #{state}</if>
+        </trim>
+    </select>
+
+
+    <insert id="add">
+        INSERT INTO `keep_accounts`.`trade_detail`
+        (`id`, `user_id`,`batch_no`,`trade_id`, `project_id`, `goods_id`, `goods_name`, `goods_count`, `income`, `sell`,
+         `remarks`, `state`, `create_time`, `update_time`, `sell_time`)
+        VALUES (#{id}, #{userId},#{batchNo}, #{tradeId}, #{projectId}, #{goodsId}, #{goodsName}, #{goodsCount}, #{income},
+                #{sell}, #{remarks}, #{state}, #{createTime}, #{updateTime}, #{sellTime})
+    </insert>
+
+    <!--更新记录-->
+    <update id="update">
+        UPDATE `keep_accounts`.`trade_detail`
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="projectId != null">`project_id` = #{projectId},</if>
+            <if test="batchNo != null">`batch_no` = #{batchNo},</if>
+            <if test="goodsId != null">`goods_id` = #{goodsId},</if>
+            <if test="goodsName != null">`goods_name` = #{goodsName},</if>
+            <if test="goodsCount != null">`goods_count` = #{goodsCount},</if>
+            <if test="income != null">`income` = #{income},</if>
+            <if test="sell != null">`sell` = #{sell},</if>
+            <if test="remarks != null">`remarks` = #{remarks},</if>
+            <if test="updateTime != null">`update_time` = #{updateTime},</if>
+            <if test="sellTime != null">`sell_time` = #{sellTime},</if>
+        </trim>
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="userId != null">`user_id` = #{userId}</if>
+            <if test="tradeId != null">AND `trade_id` = #{tradeId}</if>
+        </trim>
+    </update>
+
+    <!--删除记录-->
+    <update id="delete">
+        UPDATE `keep_accounts`.`trade_detail`
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="state != null">`state` = #{state},</if>
+            <if test="updateTime != null">`update_time` = #{updateTime},</if>
+        </trim>
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="userId != null">`user_id` = #{userId}</if>
+            <if test="tradeId != null">AND `trade_id` = #{tradeId}</if>
+        </trim>
+    </update>
+
+</mapper>
