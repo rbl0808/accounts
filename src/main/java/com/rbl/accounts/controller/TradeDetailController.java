@@ -29,7 +29,7 @@ public class TradeDetailController {
     @ApiOperation("查询所有交易记录")
     @RequestMapping(value = "/getAll", method = RequestMethod.POST)
     @ResponseBody
-    public TradeInfoRes listAll(@RequestBody @Validated TradeInfoReq tradeInfoReq) {
+    public TradeInfoRes getAll(@RequestBody @Validated TradeInfoReq tradeInfoReq) {
        return tradeService.find(tradeInfoReq);
     }
 
@@ -50,7 +50,7 @@ public class TradeDetailController {
     @ApiOperation("删除交易记录")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public TradeOperateRes update(@RequestBody @Validated TradeDeleteReq tradeDeleteReq) {
+    public TradeOperateRes delete(@RequestBody @Validated TradeDeleteReq tradeDeleteReq) {
         return tradeService.delete(tradeDeleteReq);
     }
 }
