@@ -8,6 +8,8 @@ class AccountsApplicationTests {
 
     @Test
     void contextLoads() {
+        Double number = 0.000000000000001;
+        System.out.println(Math.abs(number) < 0.00000000000001);
     }
 
 }

@@ -28,7 +28,7 @@ public interface TradeService {
     /**
      * 删除交易记录
      *
-     * @param tradeUpdateReq
+     * @param tradeDeleteReq
      * @return
      */
     TradeOperateRes delete(TradeDeleteReq tradeDeleteReq);
@@ -36,7 +36,7 @@ public interface TradeService {
     /**
      * 查询交易记录
      *
-     * @param tradeOperateReq
+     * @param tradeInfoReq
      * @return
      */
     TradeInfoRes find(TradeInfoReq tradeInfoReq);
