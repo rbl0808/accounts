@@ -1,0 +1,4 @@
+FROM justrydeng/jdk8
+MAINTAINER zhangxd<845369629@qq.com>
+RUN mkdir /var/jarDir && mkdir /var/jarDir/jenkins-docker-test
+CMD ["nohup","java","-jar","/var/jarDir/jenkins-docker-test/jenkins-0.0.1-SNAPSHOT.jar","&"]
