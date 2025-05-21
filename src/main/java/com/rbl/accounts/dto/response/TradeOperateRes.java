@@ -1,7 +1,6 @@
 package com.rbl.accounts.dto.response;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +12,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("交易记录增删改返回体")
+@Schema(name = "交易记录增删改返回体")
 public class TradeOperateRes {
-    @ApiModelProperty("提交状态")
+    @Schema(name = "提交状态")
     private String flag;
 
-    @ApiModelProperty("错误信息")
+    @Schema(name = "错误信息")
     private String error;
 }

@@ -48,7 +48,7 @@ public class CommonUtils {
      * @return
      */
     public List<String> distinct(List<String> source) {
-        List<String> result = new ArrayList<>(new LinkedHashSet<>(source));
+        List<String> result = new ArrayList<String>(new LinkedHashSet<String>(source));
         return result;
     }
 

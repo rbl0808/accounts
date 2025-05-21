@@ -1,25 +1,24 @@
 package com.rbl.accounts.dto.request.trade;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * @author zxd
  * @date 2021/7/10
  */
 @Data
-@ApiModel("查询交易记录请求体")
+@Schema(name = "查询交易记录请求体")
 public class TradeInfoReq {
-    @ApiModelProperty(value = "用户id")
+    @Schema(name = "用户id")
     private String userId;
 
-    @ApiModelProperty(value = "项目类型", required = true)
+    @Schema(name = "项目类型", required = true)
     @NotNull(message = "不能为空")
     private String projectId;
 
-    @ApiModelProperty(value = "交易批次")
+    @Schema(name = "交易批次")
     private String batchNo;
 }

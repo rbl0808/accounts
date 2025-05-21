@@ -1,8 +1,7 @@
 package com.rbl.accounts.dto.response.trade;
 
 import com.rbl.accounts.model.TradeDetail;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.List;
@@ -12,8 +11,8 @@ import java.util.List;
  * @date 2021/7/10
  */
 @Data
-@ApiModel("查询交易记录返回体")
+@Schema(name = "查询交易记录返回体")
 public class TradeInfoRes {
-    @ApiModelProperty("交易记录")
+    @Schema(name = "交易记录")
     private List<TradeDetail> tradeInfos;
 }

@@ -1,22 +1,21 @@
 package com.rbl.accounts.dto.request.goods;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * @author zxd
  * @date 2021/7/10
  */
 @Data
-@ApiModel("商品查询请求体")
+@Schema(name = "商品查询请求体")
 public class GoodsInfoReq {
-    @ApiModelProperty(value = "项目类型", required = true)
+    @Schema(name = "项目类型", required = true)
     @NotNull(message = "不能为空")
     private String projectId;
 
-    @ApiModelProperty(value = "物品id")
+    @Schema(name = "物品id")
     private String goodsId;
 }

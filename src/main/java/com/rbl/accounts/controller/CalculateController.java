@@ -3,8 +3,8 @@ package com.rbl.accounts.controller;
 
 import com.rbl.accounts.dto.request.calculate.CalculateReq;
 import com.rbl.accounts.service.PreferentialCalService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-@Api(value = "CalculateController", tags = "计算比例工具")
+@Tag(description = "CalculateController", name = "计算比例工具")
 @RequestMapping("/cal")
 public class CalculateController {
     @Autowired
     PreferentialCalService calService;
-    @ApiOperation("计算比例")
+    @Operation(summary = "计算比例")
     @RequestMapping(value = "/dnf", method = RequestMethod.POST)
     @ResponseBody
     public String calDnf(@RequestBody @Validated CalculateReq calculateReq) {
